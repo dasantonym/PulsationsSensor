@@ -1,0 +1,12 @@
+[submodule "lib/RTClib"]
+	path = lib/RTClib
+	url = https://github.com/adafruit/RTClib.git
+[submodule "lib/Adafruit_Sensor"]
+	path = lib/Adafruit_Sensor
+	url = https://github.com/adafruit/Adafruit_Sensor.git
+[submodule "lib/Adafruit_BNO055"]
+	path = lib/Adafruit_BNO055
+	url = https://github.com/adafruit/Adafruit_BNO055.git
+[submodule "lib/OSC"]
+	path = lib/OSC
+	url = https://github.com/CNMAT/OSC.git
