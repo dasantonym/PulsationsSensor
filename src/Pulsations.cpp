@@ -66,9 +66,6 @@ void setup() {
 
   delay(500);
   sensor.setExtCrystalUse(true);
-
-  //ms_start = millis();
-  //sec_start = rtc.now().unixtime();
 }
 
 void loop() {
@@ -88,13 +85,10 @@ void loop() {
     SLIPSerial.endPacket();
   }
 
-  //sensor.getEvent(&event);
   euler = sensor.getVector(Adafruit_BNO055::VECTOR_EULER);
   accel = sensor.getVector(Adafruit_BNO055::VECTOR_LINEARACCEL);
 
   char msgbuffer[64];
-  //sprintf(msgbuffer, "%s", addr);
-
   msgbuffer[0] = 1;
   msgbuffer[1] = 1;
 
@@ -121,36 +115,11 @@ void loop() {
   *fl = (float)accel.z();
   idx += sizeof(float);
 
-  // sensor.getSystemStatus(&msgbuffer[idx++], &msgbuffer[idx++], &msgbuffer[idx++]);
-
   msgbuffer[2] = idx;
 
   SLIPSerial.beginPacket();
   SLIPSerial.write(msgbuffer, idx);
   SLIPSerial.endPacket();
-
-  /*
-
-  osctime.seconds = now.unixtime();
-  osctime.fractionofseconds = 0;
-
-  msg.empty();
-  msg.setAddress(addr);
-  msg.add(osctime);
-
-  msg.add(event.orientation.x);
-  msg.add(event.orientation.y);
-  msg.add(event.orientation.z);
-
-  msg.add(accel.x());
-  msg.add(accel.y());
-  msg.add(accel.z());
-
-  SLIPSerial.beginPacket();
-  msg.send(SLIPSerial);
-  SLIPSerial.endPacket();
-
-  */
 
   digitalWrite(ACTIVITY_PIN, LOW);
 
